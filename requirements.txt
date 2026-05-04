@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+cassandra-driver
+python-dotenv
+pydantic
+pandas
+scikit-learn
+pytest
+httpx
