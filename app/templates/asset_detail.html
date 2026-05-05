@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ asset.symbol if asset else "Asset" }} · Financial DWH</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <div>
+                <h1>{{ asset.name if asset else "Asset not found" }}</h1>
+                {% if asset %}
+                <p>{{ asset.description }}</p>
+                {% endif %}
+            </div>
+            <nav>
+                <a href="/ui">Dashboard</a>
+                <a href="/docs">API Docs</a>
+            </nav>
+        </header>
+
+        {% if asset %}
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Asset Details</h2>
+                <small>{{ asset.systemTime }}</small>
+            </div>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Asset ID</th>
+                        <td>{{ asset.assetId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Symbol</th>
+                        <td>{{ asset.symbol }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ asset.assetType }}</td>
+                    </tr>
+                    <tr>
+                        <th>Region</th>
+                        <td>{{ asset.region }}</td>
+                    </tr>
+                    <tr>
+                        <th>Attributes</th>
+                        <td>{{ asset.attributes }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="panel" style="margin-top: 16px;">
+            <div class="panel-header">
+                <h2>Useful Links</h2>
+                <small>Works best for AAPL/MSFT with NASDAQ_CSV</small>
+            </div>
+
+            <div class="links">
+                <a href="/api/v1/assets/{{ asset.assetId }}">Asset JSON</a>
+                <a href="/api/v1/data?assetId={{ asset.assetId }}&dataSourceId=NASDAQ_CSV&startBusinessDate=2024-01-01&endBusinessDate=2024-01-15&includeAttributes=true">
+                    Time-series data
+                </a>
+                <a href="/api/v1/analytics/summary?assetId={{ asset.assetId }}&dataSourceId=NASDAQ_CSV&year=2024">
+                    Analytics summary
+                </a>
+                <a href="/api/v1/analytics/forecast/next-day?assetId={{ asset.assetId }}&dataSourceId=NASDAQ_CSV&year=2024">
+                    Forecast
+                </a>
+            </div>
+        </section>
+        {% else %}
+        <section class="panel">
+            <p>The requested asset does not exist.</p>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>

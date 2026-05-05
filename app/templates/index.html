@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Market DWH</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <div>
+                <h1>Financial Market Data Warehouse</h1>
+                <p>NoSQL data warehouse for financial assets, sources, time-series data, and analytics.</p>
+            </div>
+            <nav>
+                <a href="/docs">API Docs</a>
+                <a href="/api/v1/assets">Assets JSON</a>
+            </nav>
+        </header>
+
+        <section class="summary-grid">
+            <div class="summary-card">
+                <span>Assets</span>
+                <strong>{{ assets | length }}</strong>
+            </div>
+            <div class="summary-card">
+                <span>Data Sources</span>
+                <strong>{{ data_sources | length }}</strong>
+            </div>
+            <div class="summary-card">
+                <span>Storage</span>
+                <strong>Cassandra</strong>
+            </div>
+            <div class="summary-card">
+                <span>API</span>
+                <strong>FastAPI</strong>
+            </div>
+        </section>
+
+        <section class="layout">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Assets</h2>
+                    <small>Available financial instruments</small>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Region</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for asset in assets %}
+                        <tr>
+                            <td><strong>{{ asset.symbol }}</strong></td>
+                            <td>{{ asset.name }}</td>
+                            <td>{{ asset.assetType }}</td>
+                            <td>{{ asset.region }}</td>
+                            <td><a href="/ui/assets/{{ asset.assetId }}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Data Sources</h2>
+                    <small>Providers and ingestion sources</small>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Provider</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for source in data_sources %}
+                        <tr>
+                            <td><strong>{{ source.dataSourceId }}</strong></td>
+                            <td>{{ source.provider }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Demo Links</h2>
+                <small>Useful queries for the presentation</small>
+            </div>
+
+            <div class="links">
+                <a href="/api/v1/data?assetId=AAPL&dataSourceId=NASDAQ_CSV&startBusinessDate=2024-01-01&endBusinessDate=2024-01-15&includeAttributes=true">
+                    AAPL time-series data
+                </a>
+                <a href="/api/v1/analytics/summary?assetId=AAPL&dataSourceId=NASDAQ_CSV&year=2024">
+                    AAPL analytics summary
+                </a>
+                <a href="/api/v1/analytics/forecast/next-day?assetId=AAPL&dataSourceId=NASDAQ_CSV&year=2024">
+                    AAPL next-day forecast
+                </a>
+                <a href="/api/v1/data-sources">
+                    Data sources JSON
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
