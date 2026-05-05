@@ -1,0 +1,8 @@
+asset_id,symbol,asset_type,region,asset_name,asset_description,data_source_id,source_name,provider,endpoint,business_date,open,high,low,close,volume
+AAPL,AAPL,stock,US,Apple Inc.,Technology company listed on NASDAQ,NASDAQ_CSV,Nasdaq CSV Sample,Nasdaq Data Link,csv/sample,2024-01-05,181.99,182.76,180.17,181.18,62303300
+AAPL,AAPL,stock,US,Apple Inc.,Technology company listed on NASDAQ,NASDAQ_CSV,Nasdaq CSV Sample,Nasdaq Data Link,csv/sample,2024-01-08,182.09,185.60,181.50,185.56,59144500
+AAPL,AAPL,stock,US,Apple Inc.,Technology company listed on NASDAQ,NASDAQ_CSV,Nasdaq CSV Sample,Nasdaq Data Link,csv/sample,2024-01-09,183.92,185.15,182.73,185.14,42841800
+MSFT,MSFT,stock,US,Microsoft Corporation,Technology company listed on NASDAQ,NASDAQ_CSV,Nasdaq CSV Sample,Nasdaq Data Link,csv/sample,2024-01-05,368.97,372.06,366.50,367.75,20901500
+MSFT,MSFT,stock,US,Microsoft Corporation,Technology company listed on NASDAQ,NASDAQ_CSV,Nasdaq CSV Sample,Nasdaq Data Link,csv/sample,2024-01-08,369.30,375.20,369.01,374.69,23134000
+BTCUSD,BTC/USD,crypto,Global,Bitcoin / US Dollar,Bitcoin price quoted in US dollars,COINBASE_CSV,Coinbase CSV Sample,Coinbase,csv/sample,2024-01-04,42870.00,44800.00,42650.00,44110.00,32900
+BTCUSD,BTC/USD,crypto,Global,Bitcoin / US Dollar,Bitcoin price quoted in US dollars,COINBASE_CSV,Coinbase CSV Sample,Coinbase,csv/sample,2024-01-05,44110.00,44450.00,43020.00,43980.00,30100
